@@ -8,7 +8,7 @@ Install the package.
 ```
 Import the package in your code and start using it. 
 ```
-const svada = require('svada);
+const svada = require('svada');
 
 console.log(svada()); 
 ```
