@@ -19,7 +19,9 @@ module.exports = {
     const raw = fs.readFileSync('./src/svadagenerator.csv').toString();
     const data = parse(raw, {
       delimiter: ';',
-      skip_empty_lines: true
+      skip_empty_lines: true,
+      trim: true,
+      on_record: r => r.map(c => c.replace(/\r?\n|\r/g, ''))
     });
 
     let parsed = {};
