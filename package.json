@@ -1,6 +1,6 @@
 {
   "name": "svada",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "API that generates Norwegian \"svada\" based on data from svadagenerator.no.",
   "main": "./src/index.js",
   "scripts": {
