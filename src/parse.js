@@ -1,43 +1,67 @@
 'use strict';
 
 /**
- * Package imports 
+ * Dependencies
  */
 const parse = require('csv-parse/lib/sync');
 const fs = require('fs');
 
 /**
- * Function export
+ * Array that holds all the gathered svada types
  */
-module.exports = function(path) {
-  const raw = fs.readFileSync(path).toString();
-  const data = parse(raw, {
-    delimiter: ';',
-    skip_empty_lines: true
-  });
+const SvadaTypes = [];
 
-  let parsed = {};
-  let svadaType = '';
-  data.forEach(element => {
-    element = element.filter(Boolean);
+module.exports = {
+  /**
+   * Parse specific .csv and return text data as accessible js object
+   */
+  loadSvada() {
+    const raw = fs.readFileSync('./src/svadagenerator.csv').toString();
+    const data = parse(raw, {
+      delimiter: ';',
+      skip_empty_lines: true
+    });
 
-    if(element.length === 1) {
-      svadaType = element[0];
-      parsed[svadaType] = {
-        0: [],
-        1: [],
-        2: [],
-        3: [],
-        4: [],
-        5: [],
-        6: []
+    let parsed = {};
+    let svadaType = '';
+    data.forEach(element => {
+      element = element.filter(Boolean);
+
+      if(element.length === 1) {
+        svadaType = element[0];
+        parsed[svadaType] = {
+          0: [],
+          1: [],
+          2: [],
+          3: [],
+          4: [],
+          5: [],
+          6: []
+        }
+      } else if(element.length > 1) {
+        for(let i = 0; i < element.length; i++) {
+          parsed[svadaType][i].push(element[i]);
+        }
       }
-    } else if(element.length > 1) {
-      for(let i = 0; i < element.length; i++) {
-        parsed[svadaType][i].push(element[i]);
+    });
+
+    SvadaTypes.push(...Object.keys(parsed));
+    return parsed;
+  },
+
+  /**
+   * Resolve a string to a particular type of svada, if possible
+   * If the string does not match any defined type, return default type
+   * 
+   * @param {svadaType} string - the string input to resolve
+   */
+  parseSvadaType(svadaType) {
+    for(let type of SvadaTypes) {
+      if(type.toLowerCase().includes(svadaType.toLowerCase())) {
+        return type;
       }
     }
-  });
 
-  return parsed;
+    return SvadaTypes[0];
+  }
 }
