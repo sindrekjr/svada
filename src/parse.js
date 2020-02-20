@@ -16,7 +16,7 @@ module.exports = {
    * Parse specific .csv and return text data as accessible js object
    */
   loadSvada() {
-    const raw = fs.readFileSync('./src/svadagenerator.csv').toString();
+    const raw = fs.readFileSync(__dirname + '/svadagenerator.csv').toString();
     const data = parse(raw, {
       delimiter: ';',
       skip_empty_lines: true,
