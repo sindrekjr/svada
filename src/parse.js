@@ -1,14 +1,8 @@
 'use strict';
 
-/**
- * Dependencies
- */
 const parse = require('csv-parse/lib/sync');
 const fs = require('fs');
 
-/**
- * Array that holds all the gathered svada types
- */
 const SvadaTypes = [];
 
 module.exports = {
@@ -39,7 +33,7 @@ module.exports = {
           4: [],
           5: [],
           6: []
-        }
+        };
       } else if(element.length > 1) {
         for(let i = 0; i < element.length; i++) {
           parsed[svadaType][i].push(element[i]);
