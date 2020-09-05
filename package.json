@@ -4,7 +4,8 @@
   "description": "API that generates Norwegian \"svada\" based on data from svadagenerator.no.",
   "main": "./src/index.js",
   "scripts": {
-    "start": "node ./src/index.js",
+    "start": "npm run start-api",
+    "start-api": "node ./src/api",
     "test": "jest"
   },
   "repository": {
@@ -26,7 +27,8 @@
   "homepage": "https://github.com/sindrekjr/svada#readme",
   "dependencies": {
     "csv-parse": "^4.8.5",
-    "sentence-engine": "^0.4.1"
+    "express": "^4.17.1",
+    "sentence-engine": "^0.6.0"
   },
   "devDependencies": {
     "jest": "^26.2.2"

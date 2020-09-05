@@ -1,6 +1,6 @@
 'use strict';
 
-const Sentence = require('sentence-engine');
+const { createSentence } = require('sentence-engine');
 const { loadSvada, parseSvadaType } = require('./parse.js');
 
 /**
@@ -15,7 +15,7 @@ const Vocabularies = loadSvada();
  * @param {string} svadaType - the type of svada to generate
  */
 function svada(svadaType = 'generell') {
-  return Sentence(Template, Vocabularies[parseSvadaType(svadaType)]).get();
+  return createSentence(Template, Vocabularies[parseSvadaType(svadaType)]).get();
 };
 
 module.exports = svada;
