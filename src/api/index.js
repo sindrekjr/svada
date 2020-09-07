@@ -17,7 +17,8 @@ app.get('/:language', async (req, res) => {
   const result = get(req);
   try {
     res.send(await translate(get(req), { to: req.params.language }));
-  } catch(Error) {
+  } catch(error) {
+    console.log(error);
     res.send(result);
   }
 });
