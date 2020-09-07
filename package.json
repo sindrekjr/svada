@@ -27,8 +27,10 @@
   "homepage": "https://github.com/sindrekjr/svada#readme",
   "dependencies": {
     "csv-parse": "^4.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "sentence-engine": "^0.6.0"
+    "sentence-engine": "^0.6.0",
+    "translate": "^1.1.2"
   },
   "devDependencies": {
     "jest": "^26.2.2"
