@@ -1,0 +1,8 @@
+# folders
+.github/
+src/api/
+
+# misc
+*.env
+*.tgz
+*.spec.js
