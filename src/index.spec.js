@@ -1,6 +1,6 @@
-const svada = require('./svada');
+const svada = require('./index');
 
-describe('svada.js', () => {
+describe('svada', () => {
   it('should be able to return generell svada', () => {
     expect(svada('generell')).toBeDefined();
   });
@@ -43,4 +43,4 @@ describe('svada.js', () => {
     expect(svada('skole')).toBeDefined();
     expect(svada('universitet')).toBeDefined();
   });
-})
+});
